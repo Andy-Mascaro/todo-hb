@@ -10,7 +10,7 @@ const deleteButton = document.querySelector('.delete-button');
 
 todoForm.addEventListener('submit', async(e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(todoForm);
     const todo = formData.get('todo');
     await createTodo(todo);
@@ -27,9 +27,10 @@ async function displayTodos() {
     todosEl.textContent = '';
     
     for (let todo of todos) {
-        const todosEl = renderTodo(todo);
+        const todoEl = renderTodo(todo);
 
         todoEl.addEventListener('click', async() => {
+            
             await completeTodo(todo.id);
             displayTodos();
         });
@@ -38,6 +39,20 @@ async function displayTodos() {
 
 
 }
+window.addEventListener('load', async() => {
+    displayTodos();
+});
+
+logoutButton.addEventListener('click', () => {
+    logout();
+});
+
+
+deleteButton.addEventListener('click', async() => {
+    await deleteAllTodos();
+
+    displayTodos();
+});
 
 
 
