@@ -1,11 +1,4 @@
-import { 
-    checkAuth, 
-    createTodo, 
-    completeTodo,
-    getTodos,
-    logout,
-    deleteAllTodos, 
-} from '../fetch-utils.js';
+import { checkAuth, createTodo, completeTodo, getTodos, logout, deleteAllTodos,} from '../fetch-utils.js';
 import { renderTodo } from '../render-utils.js';
 
 checkAuth();
@@ -16,6 +9,14 @@ const logoutButton = document.querySelector('#logout');
 const deleteButton = document.querySelector('.delete-button');
 
 todoForm.addEventListener('submit', async(e) => {
+    
+    e.preventDefault();
+    const data = new FormData(form);
+    await createTodo(data.get('description'));
+    renderToDos();
+    form.reset();
+
+
     // on submit, create a todo, reset the form, and display the todos
 });
 

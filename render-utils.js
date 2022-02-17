@@ -1,4 +1,11 @@
-export function renderTodo(todo) {
+export function GetTodo(todo) {
+    const li = document.createElemenet('li');
+    if (todo.complete) {
+        li.classList.add('complete');
+    }
+    li.textContent = todo.description;
+    return li;
+}
     // create a div and a p tag
     // depending on whether the todo is complete, give the div the appropriate css class ('complete' or 'incomplete')
 
@@ -9,4 +16,3 @@ export function renderTodo(todo) {
     // append stuff
 
     // return the div
-}
