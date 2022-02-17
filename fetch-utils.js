@@ -25,7 +25,7 @@ export async function getTodos() {
 
 export async function completeTodo(id) {
     const resp = await client.from('todos').update({ complete: true }).match({ id });
-    console.log(resp);
+    // console.log(resp);
     // find the and update (set complete to true), the todo that matches the correct id
 
     return checkError(resp);
